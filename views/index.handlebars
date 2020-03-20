@@ -11,5 +11,20 @@
 
 <script>
 
+    $(document).on("click", ".submit-button", function(event){
+
+        let id = event.target.id;
+
+        $.ajax("/" + id, 
+        {
+            type: 'PUT',
+            data: {id: id}
+        }).then((res) => {
+
+        });
+        
+
+    });
+
     
 </script>

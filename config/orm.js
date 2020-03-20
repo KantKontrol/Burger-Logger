@@ -7,26 +7,26 @@ class ORM {
         
     }
 
-    selectAll() {
+    selectAll(res) {
+            connection.query("SELECT * FROM burgers", (err, response) => {
+                if(err)throw err;
 
-        return new Promise((resolve, reject)=> {
-            connection.query("SELECT * FROM burgers", (err, res) => {
-                if(err){
-                    reject(err);
-                }
-                else{
-                    resolve(res);
-                }
+                res.render("index", {
+                   burger: response
+                });
             });
-        });
     }
 
-    insertOne(toInsert){
-        connection.query("INSERT INTO burgers (burger_name, devoured) SET (?)", toInsert, (err, res)=> {
+    insertOne(res, toInsert){
+        connection.query("INSERT INTO burgers (burger_name, devoured) SET (?)", toInsert, (err, response)=> {
 
-            if(err)throw err;
-            
-            console.log("Inserted successfuly!");
+            if(err){
+                throw err;
+            }
+            else{
+                console.log("Inserted successfuly!");
+                res.redirect("/");
+            }
         });
     }
 

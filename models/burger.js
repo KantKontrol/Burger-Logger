@@ -6,22 +6,12 @@ class burger {
 
     }
 
-    async selectAll(){
-        let burgers = await orm.selectAll();
-        console.log(burgers);
-        let bObj = {};
-        burgers.forEach(e => {
-
-            bObj.id = e.id;
-            bObj.name = e.burger_name;
-            bObj.devoured = e.devoured;
-        });
-
-        return bObj;
+    selectAll(res){
+        orm.selectAll(res);
     }
 
-    async insert(name, devoured){
-        orm.insertOne([name, devoured]);
+    insert(res, name, devoured){
+        orm.insertOne(res, [name, devoured]);
     }
 
     update(value) {

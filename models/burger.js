@@ -1,9 +1,14 @@
-const orm = require("../config/orm.js");
+let orm = require("../config/orm.js");
 
 class burger {
 
+    constructor(){
+
+    }
+
     async selectAll(){
         let burgers = await orm.selectAll();
+        console.log(burgers);
         let bObj = {};
         burgers.forEach(e => {
 
@@ -25,6 +30,4 @@ class burger {
 }
 
 
-module.exports = {
-    burger: burger
-};
+module.exports = new burger();

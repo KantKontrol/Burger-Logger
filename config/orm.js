@@ -1,4 +1,4 @@
-const connection = require("./connection");
+let connection = require("./connection");
 
 
 class ORM {
@@ -40,4 +40,4 @@ class ORM {
     }
 }
 
-module.exports = ORM;
+module.exports = new ORM();

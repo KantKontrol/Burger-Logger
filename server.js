@@ -11,8 +11,8 @@ server.use(express.urlencoded({ extended: true }));
 server.use(express.json());
 
 
-server.engine("hbs", exhbs({ defaultLayout: "main" }));
-server.set("view engine", "hbs");
+server.engine("handlebars", exhbs({ defaultLayout: "main" }));
+server.set("view engine", "handlebars");
 
 //ROUTES
 

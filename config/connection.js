@@ -9,11 +9,12 @@ let connection = mysql.createConnection({
     database: "eatdaburger_db"
 });
 
-module.exports = connection.connect((err, res)=> {
+connection.connect((err, res)=> {
     if(err)throw err;
 
     if(res){
         console.log("Connected to db at " + connection.threadId);
-        return;
     }   
 });
+
+module.exports = connection;

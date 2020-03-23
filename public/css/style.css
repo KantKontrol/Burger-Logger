@@ -18,3 +18,12 @@
 .list-margin {
     margin-top: 4px;
 }
+
+.cus-button{
+    color: black;
+    background-color: gray;
+}
+
+.cus-button:hover{
+    border: 2px solid cyan;
+}

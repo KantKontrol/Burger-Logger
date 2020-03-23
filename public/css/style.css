@@ -3,8 +3,18 @@
  body{
      background-color: gray;
  }
+ h4 {
+     width: max-content;
+ }
 
-.center-nav-brand{
-    display:flex;
+.center{
     margin: 0 auto;
+}
+
+.main-padding {
+    padding: 5px;
+}
+
+.list-margin {
+    margin-top: 4px;
 }

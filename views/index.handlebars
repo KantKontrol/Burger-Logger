@@ -1,59 +1,41 @@
 
-<row>
-    <col class="col-sm-6">
-        <ul class="list-group"></ul>
+<div class="row">
+    <div class="col-sm-6">
+
+        <h4 class="center">Ready-To-Eat</h4>
+        <ul class="list-group list-margin">
         {{#each burger}}
-            <li class="list-group-item">
-                <h1>ID: {{id}}</h1>
-                <p>Name: {{burger_name}}</p>
-                <p>Devoured: {{devoured}}</p>
-                <button class="submit-button" id={{id}}>Devour!</button>
-            </li>
+            {{#unless devoured}}
+                <li class="list-group-item">
+                    <h1>ID: {{id}}</h1>
+                    <p>Name: {{burger_name}}</p>
+                    <p>Devoured: {{devoured}}</p>
+                    <button class="submit-button" id={{id}}>Devour!</button>
+                </li>
+            {{/unless}}
         {{/each}}
         </ul>
-    </col>
-</row>
+    </div>
 
-<row>
-    <col class="col-sm-6">
+    <div class="col-sm-6">
+        <h4 class="center">Devoured!</h4>
+        <ul class="list-group list-margin">
+            {{#each burger}}
+                {{#if devoured}}
+                    <li class="list-group-item">
+                        <h1>ID: {{id}}</h1>
+                        <p>Name: {{burger_name}}</p>
+                        <p>Devoured: {{devoured}}</p>
+                    </li>
+                {{/if}}
+            {{/each}}
+        </ul>
+    </div>
 
-    </col>
-</row>
-
+</div>
 
 
 
 <h1>Add A Burger</h1>
 <input type="text" id="burgerName" placeholder="Burger Name">
 <button id="burger-submit">Submit</button>
-
-<script>
-
-    $(document).on("click", ".submit-button", function(event){
-
-        let id = event.target.id;
-
-        $.ajax("/api/burgers/" + id,
-        {
-            type: 'PUT',
-            data: {id: id}
-        }).then((res) => {
-            location.reload();
-        });
-    });
-
-    $(document).on("click", "#burger-submit", function(event){
-
-        let burgerName = $("#burgerName").val();
-
-        $.ajax("/api/burgers",
-        {
-            type: 'POST',
-            data: {burger_name: burgerName}
-        }).then((res)=> {
-            location.reload();
-        });
-    });
-
-    
-</script>

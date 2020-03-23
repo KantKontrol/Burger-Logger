@@ -23,8 +23,8 @@
 
         let id = event.target.id;
 
-        $.ajax({
-            url: "/api/burgers/" + id,
+        $.ajax("/api/burgers/" + id,
+        {
             type: 'PUT',
             data: {id: id}
         }).then((res) => {
@@ -36,9 +36,13 @@
 
         let burgerName = $("#burgerName").val();
 
-    
-
-
+        $.ajax("/api/burgers",
+        {
+            type: 'POST',
+            data: {burger_name: burgerName}
+        }).then((res)=> {
+            location.reload();
+        });
     });
 
     

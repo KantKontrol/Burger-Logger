@@ -5,7 +5,9 @@
         <ul class="list-group list-margin">
         {{#each burger}}
             {{#unless devoured}}
+                
                 <li class="list-group-item list-max-width center">
+                    <img src='{{imageURL}}' alt="...">
                     <h1>ID: {{id}}</h1>
                     <p>Name: {{burger_name}}</p>
                     <p>Devoured: {{devoured}}</p>

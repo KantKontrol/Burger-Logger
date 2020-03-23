@@ -1,11 +1,11 @@
 const mysql = require("mysql");
-
+require("dotenv").config();
 
 let connection = mysql.createConnection({
     host: 'localhost',
     port: 3306,
-    user: 'nodeuser',
-    password: 'nodeuser',
+    user: process.env.USER_NAME,
+    password: process.env.USER_PASS,
     database: "eatdaburger_db"
 });
 

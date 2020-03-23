@@ -6,8 +6,8 @@ class burger {
 
     }
 
-    selectAll(res){
-        orm.selectAll(res);
+    selectAll(table_name, cb){
+        orm.selectAll(table_name, cb);
     }
 
     insert(res, name, devoured){

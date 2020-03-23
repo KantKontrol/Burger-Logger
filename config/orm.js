@@ -8,7 +8,7 @@ class ORM {
     }
 
     selectAll(table_name, cb) {
-            connection.query("SELECT * FROM ?", table_name, (err, res) => {
+            connection.query("SELECT * FROM ??", table_name, (err, res) => {
                 if(err)throw err;
 
                 cb(res);

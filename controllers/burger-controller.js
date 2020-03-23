@@ -4,9 +4,9 @@ module.exports = function(server){
 
 
     server.get("/", (req, res)=> {
-        burger.selectAll("burgers", (data)=> {
+        burger.selectAll("burgers", function(data) {
             res.render("index", {
-                burgers: data
+                burger: data
             });
         });
     });

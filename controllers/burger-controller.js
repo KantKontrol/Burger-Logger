@@ -1,12 +1,11 @@
 let burger = require("../models/burger.js");
-let path = require("path");
 
 module.exports = function(server){
 
     server.get("/", (req, res)=> {
         burger.selectAll("burgers", function(data) {
 
-            data.forEach(e => e.imageURL = "img/burg1.jpg");
+            data.forEach(e => e.imageURL = "img/burg1.jpg"); //added image url to burgers
             
             res.render("index", {
                 burger: data

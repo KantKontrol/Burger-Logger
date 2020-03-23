@@ -6,8 +6,16 @@
 <p>Name: {{burger_name}}</p>
 <p>Devoured: {{devoured}}</p>
 
-<button type="submit" class="submit-button" id={{id}}>Devour!</button>
+<button class="submit-button" id={{id}}>Devour!</button>
 {{/each}}
+
+
+<br>
+
+
+<h1>Add A Burger</h1>
+<input type="text" id="burgerName" placeholder="Burger Name">
+<button id="burger-submit">Submit</button>
 
 <script>
 
@@ -15,14 +23,21 @@
 
         let id = event.target.id;
 
-        $.ajax("/api/burgers/" + id, 
-        {
-            type: 'POST',
+        $.ajax({
+            url: "/api/burgers/" + id,
+            type: 'PUT',
             data: {id: id}
         }).then((res) => {
             location.reload();
         });
-        
+    });
+
+    $(document).on("click", "#burger-submit", function(event){
+
+        let burgerName = $("#burgerName").val();
+
+    
+
 
     });
 

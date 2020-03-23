@@ -15,25 +15,25 @@ class ORM {
             });
     }
 
-    insertOne(res, toInsert){
-        connection.query("INSERT INTO burgers (burger_name, devoured) SET (?)", toInsert, (err, response)=> {
+    insertOne(toInsert, cb){
+        connection.query("INSERT INTO ?? SET ? = ? AND ? = ?", toInsert, (err, response)=> {
 
             if(err){
                 throw err;
             }
             else{
                 console.log("Inserted successfuly!");
-                res.redirect("/");
+                cb();
             }
         });
     }
 
-    updateOne(toUpdate, value){
-        connection.query(`UPDATE burgers AS b SET b.devoured = '${value}' WHERE b.id = '${toUpdate}'`, (err, res)=> {
+    updateOne(table_name, colToChange, newValue, testCol, testVal, cb){
+        connection.query(`UPDATE ?? SET ?? = ? WHERE ?? = ?`, [table_name, colToChange, newValue, testCol, testVal], (err, res)=> {
 
             if(err)throw err;
 
-            console.log("Inserted successfuly!");
+            cb();
         });
     }
 }

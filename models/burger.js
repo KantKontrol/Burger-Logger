@@ -10,12 +10,12 @@ class burger {
         orm.selectAll(table_name, cb);
     }
 
-    insert(res, name, devoured){
-        orm.insertOne(res, [name, devoured]);
+    insert(name, devoured, cb){
+        orm.insertOne(["burgers", burger_name, name, devoured, devoured], cb);
     }
 
-    update(value) {
-        orm.updateOne(id, value);
+    update(id, value, cb) {
+        orm.updateOne("burgers", "devoured", value, "id", id, cb);
     }
 }
 

@@ -11,10 +11,13 @@ module.exports = function(server){
         });
     });
 
-    server.put("/:id", (req, res)=> {
+    server.post("/api/burgers/:id", (req, res)=> {
 
         let id = req.body.id;
-        console.log(id);
+        
+        burger.update(id, true, ()=> {
+            res.redirect("/");
+        });
         
     });
 };

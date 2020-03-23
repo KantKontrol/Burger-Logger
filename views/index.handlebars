@@ -15,12 +15,12 @@
 
         let id = event.target.id;
 
-        $.ajax("/" + id, 
+        $.ajax("/api/burgers/" + id, 
         {
-            type: 'PUT',
+            type: 'POST',
             data: {id: id}
         }).then((res) => {
-
+            location.reload();
         });
         
 

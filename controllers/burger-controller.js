@@ -20,5 +20,14 @@ module.exports = function(server){
         });
         
     });
+
+    server.post("/api/burgers", (req, res)=> {
+
+        let burgerName = req.body.burger_name;
+
+        burger.insert(burgerName, ()=> {
+            res.status(200).end();
+        });
+    });
 };
 

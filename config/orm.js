@@ -15,8 +15,8 @@ class ORM {
             });
     }
 
-    insertOne(toInsert, cb){
-        connection.query("INSERT INTO ?? SET ? = ? AND ? = ?", toInsert, (err, response)=> {
+    insertOne(table_name, colName, value, cb){
+        connection.query("INSERT INTO ?? SET ?? = ?", [table_name, colName, value], (err, response)=> {
 
             if(err){
                 throw err;

@@ -4,7 +4,11 @@ module.exports = function(server){
 
 
     server.get("/", (req, res)=> {
-        burger.selectAll(res);
+        burger.selectAll("burgers", (data)=> {
+            res.render("index", {
+                burgers: data
+            });
+        });
     });
 
     server.put("/:id", (req, res)=> {

@@ -7,13 +7,11 @@ class ORM {
         
     }
 
-    selectAll(res) {
-            connection.query("SELECT * FROM burgers", (err, response) => {
+    selectAll(table_name, cb) {
+            connection.query("SELECT * FROM ?", table_name, (err, res) => {
                 if(err)throw err;
 
-                res.render("index", {
-                   burger: response
-                });
+                cb(res);
             });
     }
 

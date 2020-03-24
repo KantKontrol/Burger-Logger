@@ -1,13 +1,26 @@
 const mysql = require("mysql");
 require("dotenv").config();
 
-const { Pool } = require('pg');
-const pool = new Pool({
-  connectionString: process.env.DATABASE_URL,
-  ssl: true
+let connection;
+
+if(process.env.JAWSDB_URL){
+    connection = mysql.createConnection(process.env.JAWSDB_URL);
+}else{
+     connection = mysql.createConnection({
+        host: 'localhost',
+        port: 3306,
+        user: process.env.DB_USER,
+        password: process.env.DB_PASS,
+        database: "eatdaburger_db"
+    });
+}
+
+connection.connect((err, res)=> {
+    if(err)throw err;
+
+    if(res){
+        console.log("Connected to db at " + connection.threadId);
+    }   
 });
-
-const connection = await pool.connect()
-
 
 module.exports = connection;
